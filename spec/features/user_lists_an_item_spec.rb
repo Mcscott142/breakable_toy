@@ -14,6 +14,7 @@ feature 'user creates an item listing', %Q{
 
   scenario "user lists an item for trade" do
     user = FactoryGirl.create(:user)
+    FactoryGirl.create(:category, name: "Electronics")
     sign_in_test_user(user)
 
     click_on "Add Listing"
@@ -24,7 +25,7 @@ feature 'user creates an item listing', %Q{
     click_on "Create Listing"
 
     expect(page).to have_content "Item listed!"
-    expect(page).to have_content "user.first_name"
+    expect(page).to have_content user.first_name
   end
 
   scenario "user does not fill out required information" do

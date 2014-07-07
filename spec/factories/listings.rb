@@ -2,11 +2,14 @@
 
 FactoryGirl.define do
   factory :listing do
-    name "MyString"
-    description "MyString"
+    name "Iphone 5"
+    description "Some scratches"
     value 1
-    image "MyString"
+    image
     listing_category_id 1
     user_id 1
+
+    categories
+    users
   end
 end
