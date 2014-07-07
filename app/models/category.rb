@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
-  belongs_to :listing
+  has_many :listings
   belongs_to :in_return_category
 end

@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 20140707170722) do
   end
 
   create_table "listings", force: true do |t|
-    t.string   "name",                null: false
-    t.string   "description",         null: false
-    t.integer  "value",               null: false
+    t.string   "name",        null: false
+    t.string   "description", null: false
+    t.integer  "value",       null: false
     t.string   "image"
-    t.integer  "listing_category_id", null: false
-    t.integer  "user_id",             null: false
+    t.integer  "category_id", null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

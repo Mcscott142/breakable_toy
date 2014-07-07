@@ -17,15 +17,45 @@ class ListingsController < ApplicationController
   end
 
   def index
+    @listings = Listing.order(:name)
   end
 
   def show
+    @listing = Listing.find(params[:id])
+  end
+
+   def edit
+   @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+
+    if @listing.update(listing_params) && @listing.user_id == current_user.id
+      flash[:notice] = "Listing Updated"
+      redirect_to @listing
+    else
+      flash[:notice] = "Unable to submit update in this format."
+      render :new
+    end
+  end
+
+  def destroy
+     @listing = Listing.find(params[:id])
+
+    if @listing.destroy && @listing.user_id == current_user.id
+      flash[:notice] = "Listing Removed"
+      redirect_to listings_path
+    else
+      flash[:notice] = "Unable to Remove listing."
+      render :new
+    end
   end
 
   private
 
   def listing_params
     params.require(:listing).permit(:name, :description, :value, :image,
-      :listing_category_id, :user_id)
+      :category_id, :user_id)
   end
 end

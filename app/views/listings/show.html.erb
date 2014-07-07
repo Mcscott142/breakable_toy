@@ -1,0 +1,14 @@
+<h1><%=@listing.name%></h1>
+<br>
+<h4><%= link_to 'Edit Listing', edit_listing_path(@listing) if @listing.user_id = current_user.id %></h4>
+
+<p><%=@listing.image if @listing.image? %></p>
+
+<%= @listing.description %>
+<%= @listing.value %>
+<%= @listing.category.name %>
+<%= "#{@listing.user.city}, #{@listing.user.state} #{@listing.user.zip} #{@listing.user.country}" %>
+<br>
+<%= "#{@listing.user.first_name} #{@listing.user.last_name}" %>
+
+<%= link_to "Remove Listing", @listing, method: :delete if @listing.user_id = current_user.id %>

@@ -1,15 +1,14 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :listing do
-    name "Iphone 5"
+    sequence (:name) { |n| "Item #{n}"}
     description "Some scratches"
-    value 1
-    image
-    listing_category_id 1
+    value 50
+    image "Image goes Here"
+    category_id 1
     user_id 1
 
-    categories
-    users
+    category
+    user
   end
 end
