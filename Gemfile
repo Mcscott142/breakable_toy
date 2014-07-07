@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+gem 'mini_magick', '3.5.0'
 gem 'carrierwave'
+gem 'fog'
 gem 'country_select'
 gem 'simple_form'
 gem 'bootstrap-sass'
@@ -39,6 +41,8 @@ group :test, :development do
   gem 'dotenv-rails'
   gem 'email_spec'
 end
+
+
 
 
 # Use ActiveModel has_secure_password
