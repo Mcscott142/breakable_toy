@@ -22,7 +22,7 @@ feature 'user signs into account, signs out of account', %Q{
     click_on "Sign in"
 
     expect(page).to have_content user.first_name
-    expect(page).to have_content 'Welcome! You have signed up Successfully.'
+    expect(page).to have_content 'Signed in successfully.'
   end
 
   scenario 'user signs out' do

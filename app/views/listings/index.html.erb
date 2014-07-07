@@ -1,0 +1,12 @@
+<h1>Listings</h1>
+<table>
+<tr>
+<th>Item</th><th>Category</th><th>Location</th><th>User</th>
+</tr>
+<% @listings.each do |l| %>
+<tr>
+<td><%=link_to l.name, listing_path(l) %></td><td><%= l.category.name %></td><td><%= "#{l.user.city}, #{l.user.state}" %></td><td><%= "#{l.user.first_name} #{l.user.last_name}" %></td>
+</tr>
+<% end %>
+</table>
+

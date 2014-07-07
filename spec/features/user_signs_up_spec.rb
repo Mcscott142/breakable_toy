@@ -26,7 +26,7 @@ feature 'user creates an account', %Q{
     fill_in "Password Confirmation", with: "1234abcd"
     click_on "Create Account"
 
-    expect(page).to have_content "Welcome! You have signed up Successfully"
+    expect(page).to have_content "Welcome! You have signed up successfully"
     expect(page).to have_content "Joe"
     expect(page).to have_content "Sign Out"
 
