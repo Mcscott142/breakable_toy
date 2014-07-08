@@ -9,11 +9,6 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<% if flash.any? %>
-<div>
-<%= flash[:notice] %>
-</div>
-<%end%>
 
 <% if user_signed_in? %>
   <%= link_to "#{current_user.first_name}", edit_user_registration_path %>

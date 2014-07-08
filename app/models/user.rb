@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :listings
+  has_many :offers
   has_many :comments
 
   devise :database_authenticatable, :registerable,
@@ -16,3 +17,4 @@ class User < ActiveRecord::Base
     return true
   end
 end
+
