@@ -1,4 +1,4 @@
-<h1>Make an Offer</h1>
+<h1>Edit Offer</h1>
 
 <%= simple_form_for [@listing, @offer] do |f| %>
   <%= f.input :title %>
@@ -8,7 +8,7 @@
 <% end %>
 
 <%= link_to 'Add a new listing', new_listing_path,
-  class: 'btn btn-primary btn-lg',
+  class: 'btn btn-primary btn-sm',
   data: { toggle: 'modal', target: '#new-listing-modal', remote: 'false' } %>
 
 <%= render layout: 'shared/modal',
@@ -16,4 +16,3 @@
 
 <%= render 'listings/form', listing: Listing.new %>
 <% end %>
-

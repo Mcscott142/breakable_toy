@@ -1,11 +1,3 @@
 <h1>Add a Listing</h1>
 
-<%= simple_form_for @listing do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :value %>
-  <%= f.input :category_id, label: 'Category', collection: @categories %>
-  <%= f.file_field :image %>
-  <%= f.association :in_return_categories, as: :check_boxes %>
-  <%= f.button :submit %>
-<% end %>
+<%= render partial: 'listings/form', locals: { listing: @listing } %>

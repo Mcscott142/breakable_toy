@@ -6,7 +6,7 @@ FactoryGirl.define do
     listing_id 1
     title "Xbox 360"
     description "Used"
-    swap_listing_id 2
+    swap_listing_id 1
     status "Open"
 
     user

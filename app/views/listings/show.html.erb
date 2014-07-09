@@ -17,5 +17,12 @@
 
 <h2>Offers</h2>
 <% @offers.each do |o| %>
-<%= "#{o.title} #{o.description} #{o.swap_listing.name} #{o.swap_listing.value} #{o.swap_listing.description}" %>
+  <%= "#{o.title} #{o.description} #{o.swap_listing.name} #{o.swap_listing.value} #{o.swap_listing.description} #{o.status}" %>
+  <%= link_to "Edit Offer", edit_offer_path(o) if o.user == current_user %>
+  <% if @listing.user == current_user && o.status == "Open" %>
+    <%= button_to "Accept Offer", accept_path(o), method: :patch %>
+    <%= button_to "Reject Offer", reject_path(o), method: :patch %>
+  <%end%>
 <% end %>
+
+
