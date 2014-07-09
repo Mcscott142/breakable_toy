@@ -16,7 +16,7 @@ feature 'user views a list of listings', %Q{
     visit listings_path
     expect(page).to have_content "Item 1"
     expect(page).to have_content "Item 2"
-    expect(page).to have_content "Item 3"
+    expect(page).to have_content "Item "
     expect(page).to have_content "Electronics"
     expect(page).to have_content "Mobile, AL"
     expect(page).to have_content "John Smith"

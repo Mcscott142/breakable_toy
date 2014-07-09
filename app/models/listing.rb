@@ -2,7 +2,7 @@ class Listing < ActiveRecord::Base
   belongs_to :category
   has_many :in_return_categories
   belongs_to :user
-  has_many :comments
+  has_many :offers
 
   validates :name, presence: true
   validates :description, presence: true

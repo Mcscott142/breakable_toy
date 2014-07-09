@@ -1,0 +1,5 @@
+<h1> My Offers </h1>
+
+<% @offers.each do |o| %>
+  <%= "#{o.title} #{o.description} #{o.swap_listing.name} #{o.swap_listing.value} #{o.swap_listing.description} #{o.status}" %>
+<%end%>

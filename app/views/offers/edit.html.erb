@@ -1,0 +1,18 @@
+<h1>Edit Offer</h1>
+
+<%= simple_form_for [@listing, @offer] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :swap_listing_id, label: 'My Listings', collection: @listings %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Add a new listing', new_listing_path,
+  class: 'btn btn-primary btn-sm',
+  data: { toggle: 'modal', target: '#new-listing-modal', remote: 'false' } %>
+
+<%= render layout: 'shared/modal',
+  locals: { data_target_id: 'new-listing-modal', title: 'New Listing' } do %>
+
+<%= render 'listings/form', listing: Listing.new %>
+<% end %>

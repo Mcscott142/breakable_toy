@@ -22,6 +22,12 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+ #for only showing certain listing, move this to offers controller
+    if @listing.user == current_user
+      @offers = @listing.offers
+    else
+      @offers = @listing.offers.where(user: current_user)
+    end
   end
 
    def edit

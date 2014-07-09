@@ -1,0 +1,9 @@
+<%= simple_form_for listing do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :value %>
+  <%= f.association :category %>
+  <%= f.file_field :image %>
+  <%= f.association :in_return_categories, as: :check_boxes %>
+  <%= f.button :submit %>
+<% end %>

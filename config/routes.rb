@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :listings
+    resources :listings do
+      resources :offers, shallow: true do
+        resources :comments
+      end
+    end
+
+    resources :offers, only: :index
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,6 +17,8 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+   patch 'offers/:id/accept' => 'offers#accept_offer', as: 'accept'
+   patch 'offers/:id/reject' => 'offers#reject_offer', as: 'reject'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
