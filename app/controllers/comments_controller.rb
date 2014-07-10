@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
     @listing = @offer.listing
     @comment = Comment.new(comment_params)
     @comment.offer = @offer
+    @comment.user = current_user
+
 
     if @comment.save
       redirect_to @listing

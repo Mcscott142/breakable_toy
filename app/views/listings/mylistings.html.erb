@@ -1,0 +1,5 @@
+
+<h1>My Listings</h1>
+<% @mylistings.each do |l| %>
+<%= "#{l.name}, #{l.description}, #{l.value}, #{l.category.name}"%>
+<% end %>

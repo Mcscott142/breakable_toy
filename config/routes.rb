@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+   get 'mylistings' => 'listings#mylistings'
    patch 'offers/:id/accept' => 'offers#accept_offer', as: 'accept'
    patch 'offers/:id/reject' => 'offers#reject_offer', as: 'reject'
 

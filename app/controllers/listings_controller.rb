@@ -4,6 +4,10 @@ class ListingsController < ApplicationController
     @categories = Category.all
   end
 
+  def mylistings
+    @mylistings = Listing.where(:user_id == current_user.id)
+  end
+
   def create
     @listing = current_user.listings.build(listing_params)
 
@@ -21,9 +25,9 @@ class ListingsController < ApplicationController
   end
 
   def show
-    #@comment = Comment.new
+    @comment = Comment.new
     @listing = Listing.find(params[:id])
- #for only showing certain listing, move this to offers controller
+
     if @listing.user == current_user
       @offers = @listing.offers
     else

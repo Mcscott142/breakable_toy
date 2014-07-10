@@ -3,6 +3,8 @@ class Offer < ActiveRecord::Base
   belongs_to :swap_listing, class_name: "Listing"
   belongs_to :user
 
+  has_many :comments
+
   validates :title, presence: true
   validates :listing, presence: true
   validates :user, presence: true
