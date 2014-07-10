@@ -23,6 +23,11 @@
     <%= button_to "Accept Offer", accept_path(o), method: :patch %>
     <%= button_to "Reject Offer", reject_path(o), method: :patch %>
   <%end%>
+  <h4>Comment</h4>
+  <%= simple_form_for [@offer, @comment] do |f| %>
+  <%= f.input :description, label: "Comment" %>
+  <%= f.submit %>
+  <% end %>
 <% end %>
 
 
