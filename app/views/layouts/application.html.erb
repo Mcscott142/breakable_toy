@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BreakableToy</title>
+  <title>Swap!Shop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<nav class="navbar navbar-default" role="navigation">
+   <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Swap!Shop", root_path, class: "navbar-brand" %>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+         <% if user_signed_in? %>
+          <li><%= image_tag current_user.profile_pic.thumb if current_user.profile_pic? %></li>
+          <li> <%= link_to "#{current_user.first_name}", edit_user_registration_path %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+    <ul class="nav">
+      <li><%= link_to "View Listings", listings_path%></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Add a Listing", new_listing_path%></li>
+        <li><%= link_to "My Listings", mylistings_path%></li>
+        <li><%= link_to "My Offers", offers_path%></li>
+      <% end %>
+    </ul>
+  </div>
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<% if user_signed_in? %>
-  <%= link_to "#{current_user.first_name}", edit_user_registration_path %>
-  <td><%= image_tag current_user.profile_pic.thumb if current_user.profile_pic? %>
-  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-  <%= link_to "Add Listing", new_listing_path %>
-<% else %>
-  <%= link_to "Sign In", new_user_session_path %>
-  <%= link_to "Sign Up", new_user_registration_path %>
-<% end %>
-
-
 <div class="container">
-
-    <div class="row">
-        <div class="span9 offest4">
-        <%= yield %>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="span8 offest2">
-            <h1>Content</h1>
-        </div>
-    </div>
-
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-6"><%= yield %></div>
 </div>
-
-
 </body>
 </html>
