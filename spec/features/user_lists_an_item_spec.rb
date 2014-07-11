@@ -17,7 +17,7 @@ feature 'user creates an item listing', %Q{
     FactoryGirl.create(:category, name: "Electronics")
     sign_in_test_user(user)
 
-    click_on "Add Listing"
+    click_on "Add a Listing"
     fill_in "Name", with: "Iphone 4"
     fill_in "Description", with: "Like New"
     fill_in "Value", with: "120"
@@ -32,7 +32,7 @@ feature 'user creates an item listing', %Q{
     user = FactoryGirl.create(:user)
     sign_in_test_user(user)
 
-    click_on "Add Listing"
+    click_on "Add a Listing"
     click_on "Create Listing"
 
     expect(page).to have_content "Please Fill out required fields"
