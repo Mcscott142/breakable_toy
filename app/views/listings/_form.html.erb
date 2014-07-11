@@ -4,6 +4,6 @@
   <%= f.input :value %>
   <%= f.association :category %>
   <%= f.file_field :image %>
-  <%= f.association :in_return_categories, as: :check_boxes %>
+  <%= f.association :in_return_categories, as: :check_boxes, collection: @categories, label: "Willing to Swap for:" %>
   <%= f.button :submit %>
 <% end %>
