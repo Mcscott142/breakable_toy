@@ -42,6 +42,8 @@ group :test, :development do
   gem 'email_spec'
 end
 
+gem 'rails_12factor', group: :production
+
 
 
 
