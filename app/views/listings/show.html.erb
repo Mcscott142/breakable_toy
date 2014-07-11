@@ -2,7 +2,7 @@
 <br>
 <h4><%= link_to 'Edit Listing', edit_listing_path(@listing) if @listing.user_id = current_user.id %></h4>
 
-<p><%=@listing.image if @listing.image? %></p>
+<p><%= image_tag @listing.image.med_thumb if @listing.image? %></p>
 
 <%= @listing.description %>
 <%= @listing.value %>
