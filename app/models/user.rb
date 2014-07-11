@@ -8,9 +8,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+ mount_uploader :profile_pic, ProfilePicUploader
+
  after_create :send_welcome_message
 
- mount_uploader :profile_pic, ProfilePicUploader
+
 
   def send_welcome_message
     WelcomeMailer.welcome(self).deliver
