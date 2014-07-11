@@ -44,6 +44,7 @@ class ListingPicUploader < CarrierWave::Uploader::Base
 
   version :large_thumb do
     process resize_to_fit: [500, 500]
+  end
 
 
 
