@@ -7,47 +7,305 @@
   <%= csrf_meta_tags %>
 </head>
 
-<nav class="navbar navbar-default" role="navigation">
-   <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "Swap!Shop", root_path, class: "navbar-brand" %>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-         <% if user_signed_in? %>
-          <li><%= image_tag current_user.profile_pic.thumb if current_user.profile_pic? %></li>
-          <li> <%= link_to "#{current_user.first_name}", edit_user_registration_path %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a></li>
-        <% else %>
+<!-- Begin Navbar -->
+<div class="navbar navbar-static">
+   <div class="container">
+    <html>
+<head>
+  <title>Swap!Shop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+    <div class="navbar-header">
+      <%= link_to "Swap!Shop", root_path, class: "navbar-brand" %>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+    </div>
+      <div class="nav pull-right navbar-nav">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+          <li> <%= image_tag current_user.profile_pic.thumb if current_user.profile_pic?  %></li>
+          <li id="signedin"><%= link_to "#{current_user.first_name}", edit_user_registration_path %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
           <li><%= link_to "Sign In", new_user_session_path %></li>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </nav>
-  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-    <ul class="nav">
-      <li><%= link_to "View Listings", listings_path%></li>
-      <% if user_signed_in? %>
-        <li><%= link_to "Add a Listing", new_listing_path%></li>
-        <li><%= link_to "My Listings", mylistings_path%></li>
-        <li><%= link_to "My Offers", offers_path%></li>
-      <% end %>
-    </ul>
+</div><!-- /.navbar -->
+
+<header class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1><%= link_to "Sign up and swap till' you drop", new_user_registration_path %>
+          <p class="lead"><%= link_to "or sign in if you already have an account", new_user_registration_path %></p></h1>
+      </div>
+      <div class="col-md-6">
+        <div class="well pull-right">
+          <img src="//placehold.it/280x100/E7E7E7">
+        </div>
+      </div>
+    </div>
   </div>
-<body>
+</header>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+
+<!-- Begin Body -->
 <div class="container">
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-6"><%= yield %></div>
+  <div class="no-gutter row">
+          <!-- left side column -->
+        <div class="col-md-2">
+                <div class="panel panel-default" id="sidebar">
+                <div class="panel-heading" style="background-color:#888;color:#fff;">Sidebar</div>
+                <div class="panel-body">
+            <ul class="nav nav-stacked">
+                 <li><%= link_to "View Listings", listings_path%></li>
+                  <% if user_signed_in? %>
+                    <li><%= link_to "Add a Listing", new_listing_path%></li>
+                    <li><%= link_to "My Listings", mylistings_path%></li>
+                    <li><%= link_to "My Offers", offers_path%></li>
+                  <% end %>
+            </ul>
+                <div class="accordion" id="accordion2">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                            <div class="accordion-heading">
+
+                            </div>
+                            <div id="collapseTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                </div>
+                            </div>
+                        </div>
+                </div><!--/acc-->
+
+                  <hr>
+
+                <div class="col col-span-12">
+                </div>
+
+                </div><!--/panel body-->
+              </div><!--/panel-->
+          </div><!--/end left column-->
+
+          <!--mid column-->
+          <div class="col-md-3">
+              <div class="panel" id="midCol">
+                <div class="panel-heading" style="background-color:#555;color:#eee;">Recent Listings</div>
+                <div class="panel-body">
+
+                  <img class="img-responsive" src="//placehold.it/300/77CCDD/66BBCC">
+
+                  <div class="well">
+                          <img src="/assets/example/bg1.jpg" class="img-responsive">
+                          <h3><a href="http://getbootstrap.com">Bootstrap 3 is Here.</a></h3>
+                          <p>
+                     Recent Listings sorted by creation date/time
+                          </p>
+                          <p>Link to recent listings</p>
+                  </div>
+
+                  <hr>
+
+                  <h3>User Activity</h3>
+
+                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
+                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Max Axleton</a></h5>
+                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Devin Skelly</a></h5>
+                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Katie Kowalski</a></h5>
+                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> Amet Deberge</a></h5>
+
+                  <hr>
+
+                  <img class="img-responsive" src="//placehold.it/300x200/FFF">
+
+                  <div class="media">
+                    <a class="pull-left" href="#">
+                      <img class="media-object" src="http://placehold.it/80/F0F0F0">
+                    </a>
+                    <div class="media-body">
+                    </div>
+                  </div>
+                  <div class="media">
+                    <div class="media-body">
+                    </div>
+                  </div>
+                  <div class="media">
+                    <div class="media-body">
+                    </div>
+                  </div>
+                  <div class="media">
+                    <div class="media-body">
+                    </div>
+                 </div>
+
+               </div>
+               </div><!--/panel-->
+          </div><!--/end mid column-->
+
+          <!-- right content column-->
+          <div class="col-md-7" id="content">
+              <div class="panel">
+          <div class="panel-heading" style="background-color:#111;color:#fff;">Top Stories</div>
+                <div class="panel-body">
+
+                  <div class="row">
+                  <div class="col-md-8">
+                    <!--<img src="/assets/example/bg1.jpg" class="img-responsive">-->
+                 <%= yield %>
+                  </div>
+                  <div class="col col-sm-4">
+                    <a href="#"><img src="/assets/example/bg_dogcat.jpg" class="img-responsive"></a>
+                    <div class="text-muted"><small>Aug 15 / John Pierce</small></div>
+                    <p>
+                    Web design has come a long way since 1999.
+                    </p>
+                    <hr>
+                    <img src="/assets/example/bg_blueplane.jpg" class="img-responsive">
+                    <div class="text-muted"><small>Aug 15 / Wilson Traiker</small></div>
+                    <p>
+                    The "flat" look was a big trend this year.
+                    </p>
+                  </div>
+                </div>
+
+                  <hr>
+
+                  "Mobile first" and "unobtrusive JavaScript" (AKA: "progressive enhancement") are strategies for when a new site design is being considered. These are related concepts that predated RWD: browsers of basic mobile phones do not understand JavaScript or media queries, so the recommended practice is to create a basic web site then enhance it for smart phones and PCs—rather than try "graceful degradation" to make a complex, image-heavy site work on the most basic mobile phones.
+                  <br><br>
+                  Media Queries is a CSS3 module allowing content rendering to adapt to conditions such as screen resolution (e.g. smartphone vs. high definition screen). It became a W3C recommended standard in June 2012.[1] and is a cornerstone technology of Responsive Web Design.
+
+                  <hr>
+
+                  <div class="well text-center">
+                    <h1>Centered Text</h1>
+                    This was a 2.x challenge that seems a little easier in 3.
+                    <br><br>
+                    <div style="font-size:70pt">
+                      <i class="glyphicon glyphicon-4x glyphicon-camera"></i>
+                      <i class="glyphicon glyphicon-4x glyphicon-camera"></i>
+                      <i class="glyphicon glyphicon-4x glyphicon-camera"></i>
+                    </div>
+
+                  </div>
+
+                  <hr>
+
+                  <h2>CSS3</h2>
+                  <img src="//placehold.it/150x100/EEEEEE" class="img-responsive pull-right">
+                  To understand the RWD approach, you must first understand CSS - the basis of responsive design. CSS enables the developer to use percentage-based (AKA fluid or proportion-based) grids, CSS3 media queries. The web site then adapts to multiple devices (desktop, laptop, tablet, smartphone) and display conditions such as browser size and screen resolution.
+
+                  <br><br>
+                  <button class="btn btn-default">More</button>
+
+                  <hr>
+
+                   <div class="row">
+                    <div class="col-md-6">
+                      <img src="/assets/example/bg_smartphones.jpg" class="img-responsive">
+
+                    </div>
+                    <div class="col-md-6">
+                      <h1>There is still a lot to be said about the Responsive Web.</h1>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <h2>Responsive Text</h2>
+                  Have you ever seen large text blocks overflow their container, or get cut-off? One way to handle this is to ensure
+                  the text content wraps inside the container. But the more "responsive" way is to scale font-sizes accordingly as the size of the viewing area
+                  (viewport) changes. Creators of <a href="http://fittextjs.com/">FitText</a> have mastered this in the form of a plugin.
+
+                  <hr>
+
+
+                  <div class="well">
+                    <h1>Well..</h1>
+                    Does anyone know why <a href="#">@mdo</a> or <a href="#">@fat</a> would name this element a "well"?
+                  </div>
+
+                  <hr>
+
+                  <h2>Responsive Images</h2>
+                  The sizing "grid" is not the only aspect of responsive design. Making images and media object scale correctly is another consideration for responsive developers.
+                  <span class="hidden-sm">Go ahead and shrink your browser's width to see how the HTML elements and images respond as the width of the viewport changes.</span>
+
+                  <h1><a href="#"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a></h1>
+
+                  <hr>
+
+                  Bootstrap 3 is the latest "Mobile-first" release of the Bootstrap framework that offers a starter foundation for Web designers and developers.
+                  Bootstrap consists of a CSS and JavaScript library. To use Bootstrap, you simply include (reference) in the HTML of your Web page. There is also a CDN for
+                  Bootstrap that serves pages faster.
+
+                  <hr>
+
+                  This theme was made at Bootply. Bootply is a HTML, JavaScript and CSS editor app built just for Bootstrap. Bootply enables developers to easily apply the Bootstrap Framework to their projects using a beautiful hand-coding interface. The browser-based Bootply editor lets developers select and paste Bootstrap friendly code snippets. Bootply can be used to test, manage and share any Bootstrap code, from small snippets to entire Bootstrap-ready themes. Find it at http://bootply.com
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/DDDDDD" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/555555/EEE" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/F3F3F3" class="img-responsive"></a>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/999999/DDD" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/CCCCCC" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/EDEDED" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                      <a href="#"><img src="//placehold.it/600X200/E0E0E0" class="img-responsive"></a>
+                    </div>
+                  </div>
+
+                  <hr>
+                  <h4><a href="http://bootply.com/69913">Edit on Bootply</a></h4>
+                  <hr>
+
+                  </div><!--/panel-body-->
+                </div><!--/panel-->
+                <!--/end right column-->
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">©Company 2013</div>
+    </div>
+  </div>
+</footer>

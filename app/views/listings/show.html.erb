@@ -29,8 +29,9 @@
   <h4>Comments</h4>
   <%= simple_form_for [ o, @comment] do |f| %>
   <%= f.input :description, label: "Comment" %>
-  <%= f.submit label: "Post Comment" %>
+  <i class="fa fa-comments"><%= f.submit label: "Post Comment", class: "fa fa-comments" %></i>
   <% end %>
 <% end %>
+
 
 
