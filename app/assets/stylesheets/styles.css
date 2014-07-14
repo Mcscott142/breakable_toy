@@ -27,7 +27,7 @@ header {
   #sidebar.affix-top {
       position: static;
   }
-  
+
   #sidebar.affix {
       position: fixed !important;
       top: 20px;
@@ -41,7 +41,7 @@ header {
   #midCol.affix-bottom {
       padding-top:0;
   }
-  
+
   #midCol.affix {
       position:fixed !important;
   	  top: 20px;
@@ -74,7 +74,7 @@ a,a:hover {
 .highlight {
 	color:#77CCDD;
 }
-  
+
 h3.highlight  {
 	padding-top:13px;
     padding-bottom:14px;
@@ -82,7 +82,7 @@ h3.highlight  {
 }
 
 .navbar {
-	background-color:#77CCDD;
+	background-color:#0297EC;
   	color:#ffffff;
   	border-radius:0;
 }
@@ -125,7 +125,7 @@ h3.highlight  {
 	color:#fff;
     border-width:0;
 }
-  
+
 .navbar-toggle:hover {
 	background-color:#fff;
 }

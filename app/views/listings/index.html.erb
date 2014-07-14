@@ -1,12 +1,18 @@
-<h1>Listings</h1>
-<table>
-<tr>
-<th>Item</th><th>Category</th><th>Location</th><th>User</th>
-</tr>
-<% @listings.each do |l| %>
-<tr>
-<td><%=link_to l.name, listing_path(l) %></td><td><%= l.category.name %></td><td><%= "#{l.user.city}, #{l.user.state}" %></td><td><%= "#{l.user.first_name} #{l.user.last_name}" %></td>
-</tr>
-<% end %>
-</table>
+<div class="panel">
+  <div class="panel-heading" style="background-color:#111;color:#fff;">All Listings</div>
+    <div class="panel-body">
+      <% @listings.each do |listing| %>
+        <hr>
+
+        <h2><%= listing.name %></h2>
+        <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
+        <h4><%= listing.category.name %></h4>
+        <br><br>
+        <%= link_to "See More", listing_path(listing), class: "btn btn-default"%>
+
+        <hr>
+      <% end %>
+    </div><!--/panel-body-->
+</div><!--/panel-->
+
 
