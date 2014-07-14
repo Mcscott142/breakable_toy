@@ -1,37 +1,58 @@
-<h1><%=@listing.name%></h1>
-<br>
-<h4><%= link_to 'Edit Listing', edit_listing_path(@listing) if @listing.user_id = current_user.id %></h4>
+<div class="panel">
+  <div class="panel-heading" style="background-color:#0071BC;color:#fff;">Listing</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><%= @listing.name %></h1>
+              <%= "Category: #{@listing.category.name}" %>
+              <br>
+              <%= "Value: $#{@listing.value}" %>
+              <br>
+              <%= "Location: #{@listing.user.city}, #{@listing.user.state}" %>
+              <br>
+              <%= "Posted by: #{@listing.user.first_name} #{@listing.user.last_name}" %>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag @listing.image.med_thumb, class: "img-responsive" if @listing.image? %>
+        </div>
+      </div>
 
-<p><%= image_tag @listing.image.med_thumb if @listing.image? %></p>
+      <hr>
 
-<%= @listing.description %>
-<%= @listing.value %>
-<%= @listing.category.name %>
-<%= "#{@listing.user.city}, #{@listing.user.state} #{@listing.user.zip} #{@listing.user.country}" %>
-<br>
-<%= "#{@listing.user.first_name} #{@listing.user.last_name}" %>
+      <h4>Item Description</h4>
+      <%= @listing.description %>
+      <br><br>
+      <% if @listing.user == current_user  %>
+        <%= link_to 'Edit Listing', edit_listing_path(@listing), class: "btn btn-default" %>
+        <%= link_to "Remove Listing", @listing, method: :delete, class: "btn btn-default" %>
+      <% else %>
+        <%= link_to "Make an Offer", new_listing_offer_path(@listing), class: "btn btn-default" %>
+      <% end %>
 
-<%= link_to "Make an Offer", new_listing_offer_path(@listing) %>
 
-<%= link_to "Remove Listing", @listing, method: :delete if @listing.user_id = current_user.id %>
 
-<h2>Offers</h2>
-<% @offers.each do |o| %>
-  <%= "#{o.title} #{o.description} #{o.swap_listing.name} #{o.swap_listing.value} #{o.swap_listing.description} #{o.status}" %>
-  <%= link_to "Edit Offer", edit_offer_path(o) if o.user == current_user %>
-  <% if @listing.user == current_user && o.status == "Open" %>
-    <%= button_to "Accept Offer", accept_path(o), method: :patch %>
-    <%= button_to "Reject Offer", reject_path(o), method: :patch %>
-  <%end%>
-  <% o.comments.each do |c| %>
-    <%= "#{c.description}, #{c.user.first_name} #{c.user.last_name}"%><br>
-  <% end %>
-  <h4>Comments</h4>
-  <%= simple_form_for [ o, @comment] do |f| %>
-  <%= f.input :description, label: "Comment" %>
-  <i class="fa fa-comments"><%= f.submit label: "Post Comment", class: "fa fa-comments" %></i>
-  <% end %>
-<% end %>
+      <h2>Offers</h2>
+      <% @offers.each do |o| %>
+        <%= "#{o.title} #{o.description} #{o.swap_listing.name} #{o.swap_listing.value} #{o.swap_listing.description} #{o.status}" %>
+        <%= link_to "Edit Offer", edit_offer_path(o) if o.user == current_user %>
+        <% if @listing.user == current_user && o.status == "Open" %>
+          <%= button_to "Accept Offer", accept_path(o), method: :patch %>
+          <%= button_to "Reject Offer", reject_path(o), method: :patch %>
+        <%end%>
+        <% o.comments.each do |c| %>
+          <%= "#{c.description}, #{c.user.first_name} #{c.user.last_name}"%><br>
+        <% end %>
+        <h4>Comments</h4>
+        <%= simple_form_for [ o, @comment] do |f| %>
+        <%= f.input :description, label: "Comment" %>
+        <i class="fa fa-comments"><%= f.submit label: "Post Comment", class: "fa fa-comments" %></i>
+        <% end %>
+      <% end %>
+
+  </div><!--/panel-body-->
+</div><!--/panel-->
+
+
 
 
 

@@ -1,5 +1,18 @@
+<div class="panel">
+  <div class="panel-heading" style="background-color:#0071BC;color:#fff;">My Listings</div>
+    <div class="panel-body">
+      <% @mylistings.each do |listing| %>
+        <hr>
 
-<h1>My Listings</h1>
-<% @mylistings.each do |l| %>
-<%= "#{l.name}, #{l.description}, #{l.value}, #{l.category.name}"%>
-<% end %>
+        <h2><%= listing.name %></h2>
+        <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
+        <h4><%= listing.category.name %></h4>
+        <h5><%= listing.description %></h5>
+        <h5><%= "Value: $#{listing.value}" %>
+        <br><br>
+        <%= link_to "Edit Listing", edit_listing_path(listing), class: "btn btn-default"%>
+
+        <hr>
+      <% end %>
+    </div><!--/panel-body-->
+</div><!--/panel-->

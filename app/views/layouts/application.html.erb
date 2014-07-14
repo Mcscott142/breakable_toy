@@ -60,7 +60,7 @@
         <!-- left side column -->
         <div class="col-md-2">
           <div class="panel panel-default" id="sidebar">
-            <div class="panel-heading" style="background-color:#888;color:#fff;">My Swaps</div>
+            <div class="panel-heading" style="background-color:#8CC63F;color:#fff;">My Swaps</div>
               <div class="panel-body">
                 <ul class="nav nav-stacked">
                   <li><%= link_to "View Listings", listings_path%></li>
@@ -77,32 +77,34 @@
         <!--mid column-->
           <div class="col-md-3">
               <div class="panel" id="midCol">
-                <div class="panel-heading" style="background-color:#555;color:#eee;">Most Recent Listings</div>
+                <div class="panel-heading" style="background-color:#0297EC;color:#eee;">Most Recent Listings
+                </div>
                 <div class="panel-body">
-                  <% @recentlistings.each do |listing| %>
-
-                    <%= image_tag listing.image.med_thumb, class: "img-responsive" if listing.image? %>
-
-                  <div class="well">
-                    <h3><%= link_to listing.name, listing_path(listing) %></h3>
-                      <p>Posted by: <%= "#{listing.user.first_name} #{listing.user.last_name}" %></p>
-                        <p><%= "#{listing.user.city}, #{listing.user.state}" %></p>
-                  <% end %>
+                  <div class="media">
+                    <% @recentlistings.each do |listing| %>
+                      <%= image_tag listing.image.thumb, class: "pull-left" if listing.image? %>
+                    <div class="media-body">
+                      <h5 class="media-heading"><%= link_to listing.name, listing_path(listing) %></h5>
+                      <small>Posted by: <%= "#{listing.user.first_name} #{listing.user.last_name}" %><br>
+                      <%= "#{listing.user.city}, #{listing.user.state}" %></small>
+                    </div>
+                    <% end %>
                   </div>
+                <hr>
 
-                  <hr>
 
                   <h3>Top Member </h3>
 
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
-               </div>
-               </div><!--/panel-->
-          </div><!--/end mid column-->
+                  </div>
+                  </div> <!--/panel-->
+                </div> <!-- end mid content column-->
+
 
         <!-- right content column-->
           <div class="col-md-7" id="content">
             <%= yield %>
           </div><!--/end right column-->
-  </div> <!--no-gutter row-->
-</div> <!--container-->
+      </div> <!--no-gutter row-->
+  </div> <!--container-->
 </html>
