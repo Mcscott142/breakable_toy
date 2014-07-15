@@ -1,19 +1,32 @@
-<h1>Make an Offer</h1>
+<div class="panel">
+  <div class="panel-heading" style="background-color:#0071BC;color:#fff;">Make an Offer</div>
+    <div class="panel-body">
 
-<%= simple_form_for [@listing, @offer] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :swap_listing_id, label: 'My Listings', collection: @listings %>
-  <%= f.button :submit %>
-<% end %>
+  <h1>Offer for <%= @listing.name %></h1>
+  <hr>
+  <div class="col-md-8 pull-center">
+    <%= simple_form_for [@listing, @offer] do |f| %>
+      <%= f.input :title %>
+      <br>
+      <%= f.input :description %>
+      <br>
+      <%= f.input :swap_listing_id, label: 'My Listings', collection: @listings %>
+      <br>
+      <%= f.button :submit, class: "btn btn-default" %>
+    <% end %>
+      <br>
+    <%= link_to 'Add a new listing', new_listing_path,
+      class: "btn btn-default",
+      data: { toggle: 'modal', target: '#new-listing-modal', remote: 'false' } %>
 
-<%= link_to 'Add a new listing', new_listing_path,
-  class: 'btn btn-primary btn-lg',
-  data: { toggle: 'modal', target: '#new-listing-modal', remote: 'false' } %>
+    <%= render layout: 'shared/modal',
+      locals: { data_target_id: 'new-listing-modal', title: 'New Listing' } do %>
 
-<%= render layout: 'shared/modal',
-  locals: { data_target_id: 'new-listing-modal', title: 'New Listing' } do %>
+    <%= render 'listings/form', listing: Listing.new %>
+    <% end %>
 
-<%= render 'listings/form', listing: Listing.new %>
-<% end %>
+  </div>
+
+    </div><!--/panel-body-->
+</div><!--/panel-->
 
