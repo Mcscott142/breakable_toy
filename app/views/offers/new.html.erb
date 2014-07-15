@@ -15,15 +15,10 @@
       <%= f.button :submit, class: "btn btn-default" %>
     <% end %>
       <br>
-    <%= link_to 'Add a new listing', new_listing_path,
-      class: "btn btn-default",
-      data: { toggle: 'modal', target: '#new-listing-modal', remote: 'false' } %>
+      <br>
+      If you don't have any items listed for trade you can add one <%= link_to 'here.', new_listing_path %>
 
-    <%= render layout: 'shared/modal',
-      locals: { data_target_id: 'new-listing-modal', title: 'New Listing' } do %>
 
-    <%= render 'listings/form', listing: Listing.new %>
-    <% end %>
 
   </div>
 
