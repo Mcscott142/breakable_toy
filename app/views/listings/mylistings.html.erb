@@ -3,7 +3,7 @@
     <div class="panel-body">
       <% @mylistings.each do |listing| %>
         <hr>
-
+        <% if listing.user == current_user %>
         <h2><%= listing.name %></h2>
         <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
         <h4><%= listing.category.name %></h4>
@@ -11,7 +11,7 @@
         <h5><%= "Value: $#{listing.value}" %>
         <br><br>
         <%= link_to "Edit Listing", edit_listing_path(listing), class: "btn btn-default"%>
-
+         <% end %>
         <hr>
       <% end %>
     </div><!--/panel-body-->

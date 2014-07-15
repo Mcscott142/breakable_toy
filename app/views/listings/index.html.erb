@@ -7,7 +7,7 @@
         <h2><%= listing.name %></h2>
         <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
         <h5><%= listing.category.name %></h5>
-        <h5><%= truncate(listing.description, length: 50) %>
+        <h5><%= truncate(listing.description, length: 25) %>
         <br><br>
         <%= link_to "See More", listing_path(listing), class: "btn btn-default"%>
 
