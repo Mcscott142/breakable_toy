@@ -41,6 +41,7 @@ group :test, :development do
   gem 'launchy'
   gem 'dotenv-rails'
   gem 'email_spec'
+  gem 'rack-mini-profiler'
 end
 
 gem 'rails_12factor', group: :production

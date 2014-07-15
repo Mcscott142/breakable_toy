@@ -1,6 +1,11 @@
-<div class="panel">
+<div class="panel panel-default">
   <div class="panel-heading" style="background-color:#0071BC;color:#fff;">All Listings</div>
     <div class="panel-body">
+  <b>Sort By</b>
+  <%= link_to "Category", {:controller => "listings", :action => "index", :order_by => 'category' }, class: "pull-right"%>
+  <%= link_to "User", {:controller => "listings", :action => "index", :order_by => 'user' }, class: "pull-right"%>
+  <%= link_to "Location", {:controller => "listings", :action => "index", :order_by => 'user.location' }, class: "pull-right"%>
+</ul>
       <% @listings.each do |listing| %>
         <hr>
 
