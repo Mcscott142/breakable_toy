@@ -2,7 +2,25 @@
   <div class="panel-heading" style="background-color:#0071BC;color:#fff;">Add a Listing</div>
     <div class="panel-body">
 
-<%= render partial: 'listings/form', locals: { listing: @listing } %>
+<%= simple_form_for @listing do |f| %>
+  <div class="col-md-6">
+  <%= f.input :name %>
+  <br>
+  <%= f.input :description %>
+  <br>
+  <%= f.input :value %>
+  <br>
+  <%= f.association :category %>
+  <br>
+  <%= f.file_field :image %>
+  <br>
+   <%= f.button :submit, class: "btn btn-default" %>
+  </div>
+  <div class="col-md-6">
+  <%= f.association :in_return_categories, as: :check_boxes, collection: @categories, label: "Willing to Swap for:" %>
+   </div>
+<% end %>
+
 
     </div><!--/panel-body-->
 </div><!--/panel-->
