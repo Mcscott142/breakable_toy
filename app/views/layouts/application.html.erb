@@ -32,7 +32,7 @@
 <header class="masthead">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-7">
       <% if user_signed_in? %>
       <h1>Swap don't shop
         <p class="lead">Take trading to the next level with Swap!Shop</p>
@@ -41,6 +41,8 @@
         <h1><%= link_to "Sign up and swap till' you drop", new_user_registration_path %>
           <p class="lead"><%= link_to "or sign in if you already have an account", new_user_registration_path %></p></h1>
       <% end %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
       </div>
       <div class="col-md-5">
         <div class="well pull-right">
@@ -51,8 +53,7 @@
   </div>
 </header>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
 
 <!-- Begin Body -->
 <div class="container">
