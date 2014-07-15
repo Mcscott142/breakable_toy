@@ -20,3 +20,4 @@ Category.create(name: "Toys")
 Category.create(name: "Clothing & Shoes")
 
 
+

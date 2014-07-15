@@ -38,6 +38,10 @@ class ListingPicUploader < CarrierWave::Uploader::Base
      process resize_to_fit: [50, 50]
    end
 
+   version :small_thumb do
+    process resize_to_fit: [150, 100]
+  end
+
    version :med_thumb do
     process resize_to_fit: [300, 300]
   end

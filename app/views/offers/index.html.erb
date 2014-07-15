@@ -1,5 +1,25 @@
-<h1> My Offers </h1>
+<div class="panel">
+  <div class="panel-heading" style="background-color:#0071BC;color:#fff;">My Offers</div>
+    <div class="panel-body">
+      <% @offers.each do |offer| %>
+        <% if offer.user == current_user %>
+          <div class="col-md-6">
+          <h5>Offer</h5>
+          <%= image_tag offer.swap_listing.image.small_thumb, class: "img-responsive pull-right" if offer.swap_listing.image %>
+          <%= link_to offer.swap_listing.name, listing_path(offer.swap_listing.name) %>
+          <br>
+          <%= "Value: $#{offer.swap_listing.value}" %>
+          </div>
 
-<% @offers.each do |o| %>
-  <%= "#{o.title} #{o.description} #{o.swap_listing.name} #{o.swap_listing.value} #{o.swap_listing.description} #{o.status}" %>
-<%end%>
+          <div class="col-md-6">
+          <h5>Listing</h5>
+          <%= link_to offer.listing.name,listing_path(offer.listing)  %>
+          <%= image_tag offer.listing.image.small_thumb, class: "img-responsive pull-right" if offer.listing.image %>
+          <br>
+          <%= "Value: $#{offer.listing.value}" %>
+          </div>
+         <% end %>
+        <hr>
+      <% end %>
+    </div><!--/panel-body-->
+</div><!--/panel-->
