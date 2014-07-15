@@ -1,25 +1,38 @@
+<div class="panel">
+  <div class="panel-heading" style="background-color:#0071BC;color:#fff;">Edit User Profile</div>
+    <div class="panel-body">
+
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
+  <div class="col-md-6">
+      <%= f.input :first_name, required: true, label: "First Name" %>
+      <%= f.input :last_name, required: true, label: "Last Name" %>
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :city, required: true %>
+      <%= f.input :state, required: true %>
+      <%= f.input :zip, required: true %>
+      <br>
+      <%= f.label "Country: "%>
+      <br>
+      <%= f.country_select :country, ["United States"], label: "Country" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :profile_pic, type: :file %>
+      <br>
+      <%= f.input :password, required: true %>
+      <br>
+      <%= f.input :password_confirmation, required: true, label: "Password Confirmation" %>
+    <br>
+    <%= f.button :submit, "Create Account", class: "btn btn-default" %>
 
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true, label: "First Name" %>
-    <%= f.input :last_name, required: true, label: "Last Name" %>
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :city, required: true %>
-    <%= f.input :state, required: true %>
-    <%= f.input :zip, required: true %>
-    <%= f.label "Country"%>
-    <%= f.country_select :country, ["United States"], label: "Country" %>
-    <%= f.input :profile_pic, type: :file %>
-    <%= f.input :password, required: true %>
-    <%= f.input :password_confirmation, required: true, label: "Password Confirmation" %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Create Account" %>
-  </div>
 <% end %>
 
+
 <%= render "devise/shared/links" %>
+</div>
+
+    </div><!--/panel-body-->
+</div><!--/panel-->
+
