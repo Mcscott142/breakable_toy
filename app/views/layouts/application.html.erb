@@ -17,7 +17,7 @@
     <div class="nav pull-right navbar-nav">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-          <li> <%= image_tag current_user.profile_pic.thumb if current_user.profile_pic?  %></li>
+          <li> <%= image_tag current_user.profile_pic.thumb, class: "img-circle" if current_user.profile_pic?  %></li>
           <li id="signedin"><%= link_to "#{current_user.first_name}", edit_user_registration_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
