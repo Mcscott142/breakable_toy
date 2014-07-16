@@ -37,7 +37,7 @@
       <% @offers.each do |o| %>
 
         <div class="col-md-6">
-          <h5><%= o.title %></h5>
+          <h5><%= link_to o.title, offer_path(o) %></h5>
           Message: <br>
           <%= o.description %>
           <br><br>
@@ -48,14 +48,12 @@
           <%end%>
           <br><br><br>
           <h4>Messages</h4>
-            <div class="col-md-5">
+
               <% o.comments.each do |c| %>
               <b><%= "#{c.user.first_name} #{c.user.last_name}"%></b><br>
-            </div>
-            <div class="col-md-7">
               <%= c.description %>
-            </div>
-          <% end %>
+
+              <% end %>
           <br><br><br>
           <%= simple_form_for [ o, @comment] do |f| %>
            <%= f.input :description, label: false %>
@@ -86,9 +84,7 @@
         <br>
 
           <hr>
-          <div class="col-md-12">
 
-        </div>
 
   </div><!--/panel-body-->
 </div><!--/panel-->

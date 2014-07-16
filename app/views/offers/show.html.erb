@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="background-color:#0071BC;color:#fff;">Offer</div>
+    <div class="panel-body">
+        <div class="row">
+        <div class="col-md-6">
+          <h1><%= @offer.swap_listing.name %></h1>
+              <%= "Category: #{@offer.swap_listing.category.name}" %>
+              <br>
+              <%= "Value: $#{@offer.swap_listing.value}" %>
+              <br>
+              <%= "Location: #{@offer.user.city}, #{@offer.user.state}" %>
+              <br>
+              <%= "Posted by: #{@offer.user.first_name} #{@offer.user.last_name}" %>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag @offer.swap_listing.image.med_thumb, class: "img-responsive" if @offer.swap_listing.image? %>
+        </div>
+      </div>
+
+      <hr>
+        <h4>Messages</h4>
+
+              <% @offer.comments.each do |c| %>
+              <b><%= "#{c.user.first_name} #{c.user.last_name}"%></b><br>
+              <%= c.description %>
+
+              <% end %>
+          <br><br><br>
+          <%= simple_form_for [ @offer, @comment] do |f| %>
+           <%= f.input :description, label: false %>
+           <i class="fa fa-comments"><%= f.submit label: "Post Comment",  class: "btn btn-default"  %></i>
+          <% end %>
+
+
+    </div><!--/panel-body-->
+</div><!--/panel-->

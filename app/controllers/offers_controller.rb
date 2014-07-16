@@ -41,6 +41,11 @@ class OffersController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new
+    @offer = Offer.find(params[:id])
+  end
+
   def accept_offer
     @offer = Offer.find(params[:id])
     @listing = @offer.listing
