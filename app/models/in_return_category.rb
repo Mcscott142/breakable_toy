@@ -1,4 +1,4 @@
 class InReturnCategory < ActiveRecord::Base
-  has_one :category
-  has_one :listing
+  belongs_to :category
+  belongs_to :listing
 end

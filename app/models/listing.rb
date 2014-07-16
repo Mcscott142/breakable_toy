@@ -11,4 +11,8 @@ class Listing < ActiveRecord::Base
   validates :user_id, presence: true
 
    mount_uploader :image, ListingPicUploader
+
+   def self.search(query)
+  where("name like ?", "%#{query}%")
+   end
 end

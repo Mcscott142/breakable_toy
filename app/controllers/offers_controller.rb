@@ -49,8 +49,10 @@ class OffersController < ApplicationController
   def accept_offer
     @offer = Offer.find(params[:id])
     @listing = @offer.listing
-    @offer.status = "accepted"
-    if @offer.save
+    @offer.status = "Accepted"
+    @listing.status = "Closed"
+
+    if @offer.save && @listing.save
       flash[:notice] = "Offer Accepted!"
       offers = @listing.offers
       offers.each do |offer|
@@ -65,7 +67,7 @@ class OffersController < ApplicationController
   def reject_offer
     @offer = Offer.find(params[:id])
     @listing = @offer.listing
-    @offer.status = "rejected"
+    @offer.status = "Rejected"
     if @offer.save
       flash[:notice] = "Offer Rejected"
     else

@@ -3,8 +3,8 @@
     <div class="panel-body">
    <div class="pull-right">
   <b>Sort By</b>
-  <%= link_to "Category", {:controller => "listings", :action => "index", :order_by => 'category' }%>
-  <%= link_to "User", {:controller => "listings", :action => "index", :order_by => 'user' }%>
+  <%= link_to "Category", {:controller => "listings", :action => "index", :order_by => 'listing.category.name' }%>
+  <%= link_to 'User', listings_path(:sort_param => "user")%>
   <%= link_to "Location", {:controller => "listings", :action => "index", :order_by => 'user.location' }%>
   </div>
       <% @listings.each do |listing| %>
@@ -13,7 +13,11 @@
         <h2><%= listing.name %></h2>
         <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
         <h5><%= listing.category.name %></h5>
-        <h5><%= truncate(listing.description, length: 25) %>
+        <%= "Location: #{listing.user.city}, #{listing.user.state}" %>
+        <br>
+        <%= "Posted by: #{listing.user.first_name} #{listing.user.last_name}" %>
+        <h5>Description:</h5>
+        <%= truncate(listing.description, length: 50) %>
         <br><br>
         <%= link_to "See More", listing_path(listing), class: "btn btn-default"%>
 

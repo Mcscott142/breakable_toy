@@ -22,6 +22,16 @@
   <div class="navbar-header">
     <%= link_to "Swap!Shop", root_path, class: "navbar-brand" %>
   </div>
+
+  <div class="nav navbar-nav", id="navsearch">
+     <%= form_tag listings_path, method: 'get' do %>
+      <%= text_field_tag :search, params[:search], class: "navbar-search navbar-form form-control", placeholder: "search listings" %>
+      <% end %>
+      </div>
+
+
+
+
     <div class="nav pull-right navbar-nav">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
