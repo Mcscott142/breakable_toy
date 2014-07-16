@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!-- Begin Navbar -->
 <div class="navbar navbar-static">
    <div class="container">
@@ -14,6 +22,16 @@
   <div class="navbar-header">
     <%= link_to "Swap!Shop", root_path, class: "navbar-brand" %>
   </div>
+
+  <div class="nav navbar-nav", id="navsearch">
+     <%= form_tag listings_path, method: 'get' do %>
+      <%= text_field_tag :search, params[:search], class: "navbar-search navbar-form form-control", placeholder: "search listings" %>
+      <% end %>
+      </div>
+
+
+
+
     <div class="nav pull-right navbar-nav">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
@@ -75,22 +93,37 @@
           </div><!--/panel-->
         </div><!--/end left column-->
 
-        <!--mid column-->
+          <!-- mid content column-->
+          <div class="col-md-7" id="content">
+            <%= yield %>
+          </div><!--/end mid column-->
+
+        <!--right column-->
           <div class="col-md-3">
               <div class="panel panel-default" id="midCol">
-                <div class="panel-heading" style="background-color:#0297EC;color:#eee;">Most Recent Listings
+                <div class="panel-heading" style="background-color:#0297EC;color:#eee;">The Feed
                 </div>
                 <div class="panel-body">
                   <div class="media">
+                  <h5>Most Recent Listings</h5>
                     <% @recentlistings.each do |listing| %>
                       <%= image_tag listing.image.thumb, class: "pull-left" if listing.image? %>
                     <div class="media-body">
-                      <h5 class="media-heading"><%= link_to listing.name, listing_path(listing) %></h5>
+                      <h6 class="media-heading"><%= link_to listing.name, listing_path(listing) %></h6>
                       <small>Posted by: <%= "#{listing.user.first_name} #{listing.user.last_name}" %><br>
                       <%= "#{listing.user.city}, #{listing.user.state}" %></small>
                     </div>
                     <% end %>
                   </div>
+                <hr>
+
+                <a class="twitter-timeline" href="https://twitter.com/Mcscott142" data-widget-id="489384846519566337">Tweets by @Mcscott142</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                <hr>
+
+                <div class="fb-like-box" data-href="https://www.facebook.com/swapitdontshopit" data-width="260" data-height="500" data-colorscheme="light" data-show-faces="false" data-header="true" data-stream="true" data-show-border="false"></div>
+
                 <hr>
 
 
@@ -99,11 +132,7 @@
                   <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
                   </div>
                   </div> <!--/panel-->
-                </div> <!-- end mid content column-->
-        <!-- right content column-->
-          <div class="col-md-7" id="content">
-            <%= yield %>
-          </div><!--/end right column-->
+                </div> <!-- end right content column-->
       </div> <!--no-gutter row-->
   </div> <!--container-->
   </html>

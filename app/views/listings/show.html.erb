@@ -11,9 +11,19 @@
               <%= "Location: #{@listing.user.city}, #{@listing.user.state}" %>
               <br>
               <%= "Posted by: #{@listing.user.first_name} #{@listing.user.last_name}" %>
+              <br><br>
+              Willing to trade for:
+              <br><br>
+              <% @listing.in_return_categories.each do |x| %>
+              <ul>
+              <li><%= x.category.name %></li>
+              </ul>
+              <% end %>
         </div>
         <div class="col-md-6">
           <%= image_tag @listing.image.med_thumb, class: "img-responsive" if @listing.image? %>
+          <br>
+          <b>Status:</b> <%= @listing.status %>
         </div>
       </div>
 
@@ -22,11 +32,11 @@
       <h4>Item Description</h4>
       <%= @listing.description %>
       <br><br>
-      <% if @listing.user == current_user  %>
+      <% if @listing.user == current_user && @listing.status == "Open"  %>
         <%= link_to 'Edit Listing', edit_listing_path(@listing), class: "btn btn-default" %>
         <%= link_to "Remove Listing", @listing, method: :delete, class: "btn btn-default" %>
       <% else %>
-        <%= link_to "Make an Offer", new_listing_offer_path(@listing), class: "btn btn-default" %>
+        <%= link_to "Make an Offer", new_listing_offer_path(@listing), class: "btn btn-default" if @listing.status == "Open" %>
       <% end %>
 
       <hr>
@@ -35,42 +45,15 @@
       <h2>Offers</h2>
       <hr>
       <% @offers.each do |o| %>
+        <% if o.user == current_user %>
 
         <div class="col-md-6">
-          <h5><%= o.title %></h5>
+          <h3><%= o.title %></h3>
           Message: <br>
           <%= o.description %>
           <br><br>
-          <%= link_to "Edit Offer", edit_offer_path(o), class: "btn btn-default" if o.user == current_user %>
-          <% if @listing.user == current_user && o.status == "Open" %>
-            <%= button_to "Accept Offer", accept_path(o), method: :patch, class: "btn btn-default" %>
-            <%= button_to "Reject Offer", reject_path(o), method: :patch, class: "btn btn-default" %>
-          <%end%>
-          <br><br><br>
-          <h4>Messages</h4>
-            <div class="col-md-5">
-              <% o.comments.each do |c| %>
-              <b><%= "#{c.user.first_name} #{c.user.last_name}"%></b><br>
-            </div>
-            <div class="col-md-7">
-              <%= c.description %>
-            </div>
-          <% end %>
-          <br><br><br>
-          <%= simple_form_for [ o, @comment] do |f| %>
-           <%= f.input :description, label: false %>
-           <i class="fa fa-comments"><%= f.submit label: "Post Comment",  class: "btn btn-default"  %></i>
-          <% end %>
-
-        </div>
-
-        <div class="col-md-6">
-          <%= image_tag o.swap_listing.image.med_thumb, class: "img-responsive" if o.swap_listing.image? %>
-          <br>
-          <br>
-          <h5><%= o.swap_listing.name %></h5>
-          <h6>Item Description:</h6>
-          <%= o.swap_listing.description %>
+          <h5>Item Details</h5>
+          <%= o.swap_listing.name %>
           <br>
           <%= "Category: #{o.swap_listing.category.name}" %>
           <br>
@@ -80,15 +63,57 @@
           <br>
           <%= "Posted by: #{o.swap_listing.user.first_name} #{o.swap_listing.user.last_name}" %>
           <br>
+          <h6>Item Description:</h6>
+          <%= o.swap_listing.description %>
         </div>
-      <% end %>
-        <br>
-        <br>
 
-          <hr>
+        <div class="col-md-6">
+          <%= image_tag o.swap_listing.image.small_thumb, class: "img-responsive" if o.swap_listing.image? %>
+          <br><br>
+          <%= link_to "Edit Offer", edit_offer_path(o), class: "btn btn-default" if o.user == current_user %>
+        </div>
+
+
+
+        <div class="col-md-12">
+        <hr>
+        <h4>Messages</h4>
+
+          <% o.comments.each do |c| %>
+            <b><%= "#{c.user.first_name} #{c.user.last_name}"%></b>:
+            <%= c.description %>
+            <br>
+          <% end %>
+
+
+        <hr>
+          <%= simple_form_for [ o, @comment] do |f| %>
+             <%= f.input :description, label: false %>
+             <i class="fa fa-comments"><%= f.submit label: "Post Comment",  class: "btn btn-default"  %></i>
+             <hr>
+       </div>
+          <% end %>
+
+        <% else %>
           <div class="col-md-12">
+          <%= link_to o.swap_listing.name, offer_path(o) %>
+            <%= image_tag o.swap_listing.image.small_thumb, class: "img-responsive pull-right" if o.swap_listing.image %>
+          <br>
+          <%= "Category: #{o.swap_listing.category.name}" %>
+          <br>
+          <%= "Value: $#{o.swap_listing.value}" %>
+          <br>
+          <%= "Location: #{o.swap_listing.user.city}, #{o.swap_listing.user.state}" %>
+          <br>
+          <%= "Posted by: #{o.swap_listing.user.first_name} #{o.swap_listing.user.last_name}" %>
+          <br>
+          <%= "Status: #{o.status}" %>
+           <hr>
+          </div>
 
-        </div>
+        <% end %>
+
+      <% end %>
 
   </div><!--/panel-body-->
 </div><!--/panel-->

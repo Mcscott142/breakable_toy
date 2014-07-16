@@ -21,7 +21,7 @@ header {
   }
 
   #content {
- 	padding-right:15px;
+
   }
 
   #sidebar.affix-top {
@@ -204,6 +204,10 @@ footer {
     width: 8.333333333333332%;
     *width: 8.263888888888888%;
   }
+}
+
+#navsearch {
+    padding-left: 300px;
 }
 
 /* end custom theme */

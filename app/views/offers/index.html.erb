@@ -6,7 +6,7 @@
           <div class="col-md-6">
           <h5>Offer</h5>
           <%= image_tag offer.swap_listing.image.small_thumb, class: "img-responsive pull-right" if offer.swap_listing.image %>
-          <%= link_to offer.swap_listing.name, listing_path(offer.swap_listing.name) %>
+          <%= link_to offer.swap_listing.name, listing_path(offer.swap_listing) %>
           <br>
           <%= "Value: $#{offer.swap_listing.value}" %>
           </div>
