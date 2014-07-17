@@ -6,14 +6,14 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     @listing = Listing.find(params[:listing_id])
-    @listings = current_user.listings
+    @listings = current_user.listings.where.not(status: "Closed")
   end
 
   def create
     @offer = current_user.offers.build(offer_params)
     @listing = Listing.find(params[:listing_id])
     @offer.listing = @listing
-    @listings = current_user.listings
+    @listings = current_user.listings.where.not(status: "Closed")
 
     if @offer.save
       flash[:notice] = "Offer made!"
@@ -49,10 +49,12 @@ class OffersController < ApplicationController
   def accept_offer
     @offer = Offer.find(params[:id])
     @listing = @offer.listing
+    @swaplisting = @offer.swap_listing
     @offer.status = "Accepted"
     @listing.status = "Closed"
+    @swaplisting.status = "Closed"
 
-    if @offer.save && @listing.save
+    if @offer.save && @listing.save && @swaplisting.save
       flash[:notice] = "Offer Accepted!"
       offers = @listing.offers
       offers.each do |offer|

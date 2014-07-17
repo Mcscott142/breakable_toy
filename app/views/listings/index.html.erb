@@ -16,6 +16,8 @@
         <%= "Location: #{listing.user.city}, #{listing.user.state}" %>
         <br>
         <%= "Posted by: #{listing.user.first_name} #{listing.user.last_name}" %>
+        <br>
+        Status: <%= listing.status %>
         <h5>Description:</h5>
         <%= truncate(listing.description, length: 50) %>
         <br><br>

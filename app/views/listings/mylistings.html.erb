@@ -2,7 +2,6 @@
   <div class="panel-heading" style="background-color:#0297EC;color:#fff;">My Listings</div>
     <div class="panel-body">
       <% @mylistings.each do |listing| %>
-        <hr>
         <% if listing.user == current_user %>
         <h2><%= listing.name %></h2>
         <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
@@ -10,9 +9,13 @@
         <h5><%= listing.description %></h5>
         <h5><%= "Value: $#{listing.value}" %>
         <br><br>
+        <% if listing.status == "Closed" %>
+        <h3>Listing Closed</h3>
+        <% else %>
         <%= link_to "Edit Listing", edit_listing_path(listing), class: "btn btn-default"%>
-         <% end %>
+        <% end %>
         <hr>
+         <% end %>
       <% end %>
     </div><!--/panel-body-->
 </div><!--/panel-->

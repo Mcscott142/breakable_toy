@@ -23,7 +23,15 @@
               <%end%>
         </div>
         <div class="col-md-6">
-          <%= image_tag @offer.swap_listing.image.med_thumb, class: "img-responsive" if @offer.swap_listing.image? %>
+          <%= image_tag @offer.swap_listing.image.med_thumb, class: "img-responsive" if @offer.swap_listing.image? %><br>
+          <% if @offer.status == "Open" %>
+          <p>Status: Open</p>
+          <% elsif @offer.status == "Rejected" %>
+          <p id="Rejected">Rejected!</p>
+          <% else %>
+          <p id="Accepted">Accepted!</p>
+          <% end %>
+
         </div>
       </div>
 

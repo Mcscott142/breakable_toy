@@ -210,4 +210,12 @@ footer {
     padding-left: 330px;
 }
 
+#Rejected {
+  color: #FF0000;
+}
+
+#Accepted {
+  color: #4b943d;
+}
+
 /* end custom theme */
