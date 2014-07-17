@@ -24,7 +24,7 @@
           <%= image_tag @listing.image.med_thumb, class: "img-responsive" if @listing.image? %>
           <br>
           <% if @listing.status == "Closed" %>
-          <b>Status:</b> <span id="closedstatus"><%= @listing.status %></span>
+          <h3><b>Status:</b> <span id="Rejected">Item is now closed.</span></h3>
           <% end %>
         </div>
       </div>
@@ -72,7 +72,15 @@
         <div class="col-md-6">
           <%= image_tag o.swap_listing.image.small_thumb, class: "img-responsive" if o.swap_listing.image? %>
           <br><br>
+          <% if o.status == "Open" %>
           <%= link_to "Edit Offer", edit_offer_path(o), class: "btn btn-default" if o.user == current_user %>
+          <% elsif o.status == "Rejected" %>
+          <h3 id="Rejected">Rejected!</h3>
+          <% else %>
+          <h3 id="Accepted">Accepted!</h3>
+          <% end %>
+
+
         </div>
 
 
@@ -112,6 +120,7 @@
           <%= "Status: #{o.status}" %>
            <hr>
           </div>
+
 
         <% end %>
 

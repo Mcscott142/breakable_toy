@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
    def set_listings
-    @recentlistings = Listing.order(created_at: :desc ).limit(5)
+    @recentlistings = Listing.order(created_at: :desc ).where.not(status: "Closed").limit(5)
    end
 end

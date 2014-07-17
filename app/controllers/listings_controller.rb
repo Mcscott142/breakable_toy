@@ -27,11 +27,11 @@ class ListingsController < ApplicationController
 
   def index
     if params[:search]
-      @listings = Listing.search(params[:search]).order("created_at DESC")
+      @listings = Listing.search(params[:search]).order("created_at DESC").order(status: :desc)
     elsif
-      @listings = Listing.order(params[:sort])
+      @listings = Listing.order(params[:sort]).order(status: :desc)
     else
-      @listings = Listing.order(created_at: :desc)
+     @listings = Listing.order(status: :desc).order(created_at: :desc)
     end
   end
 
