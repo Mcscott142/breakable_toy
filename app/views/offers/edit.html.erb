@@ -1,5 +1,6 @@
-<h1>Edit Offer</h1>
-
+<div class="panel">
+  <div class="panel-heading" style="background-color:#0297EC;color:#fff;">Edit Offer</div>
+    <div class="panel-body">
 <%= simple_form_for [@listing, @offer] do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
@@ -16,3 +17,7 @@
 
 <%= render 'listings/form', listing: Listing.new %>
 <% end %>
+
+    </div><!--/panel-body-->
+</div><!--/panel-->
+

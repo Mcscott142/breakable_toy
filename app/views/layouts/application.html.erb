@@ -49,30 +49,61 @@
 
 <header class="masthead">
   <div class="container">
+
     <div class="row">
-      <div class="col-md-7">
-      <% if user_signed_in? %>
-      <h1>Swap don't shop
-        <p class="lead">Take trading to the next level with Swap!Shop</p>
-        </h1>
-      <% else %>
-        <h1><%= link_to "Sign up and swap till' you drop", new_user_registration_path %>
-          <p class="lead"><%= link_to "or sign in if you already have an account", new_user_registration_path %></p></h1>
-      <% end %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+
+    <div class="col-md-9">
+      <!--  Carousel - consult the Twitter Bootstrap docs at
+          http://twitter.github.com/bootstrap/javascript.html#carousel -->
+      <div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
+        <div class="carousel-inner">
+          <div class="item active"><!-- class of active since it's the first item -->
+            <img src="http://1.bp.blogspot.com/-T6_czdEkNE8/Uy9QGX5EecI/AAAAAAAADKc/m0zMtlE0ccw/s1600/retro_konas.jpg" alt="" />
+              <div class="carousel-caption">
+              <h1>Swap ! Shop</h1>
+              <h4>Sporting Goods</h4>
+            </div>
+          </div>
+          <div class="item">
+            <img src="http://www.son-video.com/images/dynamic/Chaines_hi_fi/articles/Onkyo/ONKCS245NR/Onkyo-CS-245-Colibrino-Noir_P_1200.jpg" alt="" />
+            <div class="carousel-caption">
+              <h2>Swap It, Don't Shop It<h2>
+              <h3>Cell Phones and Electronics</h3>
+            </div>
+          </div>
+          <div class="item">
+            <img src="http://content.abt.com/image.php/big_2492M.jpg?image=/images/products/BDP_Images/big_2492M.jpg&canvas=1&quality=100&min_w=450&min_h=320&ck=317" alt="" />
+            <div class="carousel-caption">
+              <h2>Swap Shades</h2>
+            </div>
+          </div>
+          <div class="item">
+            <img src="http://motherboard-cdn-assets.vice.com/content-images/contentimage/10464/1399664221398.jpeg?crop=1xw:0.713588850174216xh;*,*&resize=1200:*&output-format=jpeg&output-quality=90" alt="" />
+            <div class="carousel-caption pull-left">
+              <h3>Video Games and Systems</h3>
+            </div>
+          </div>
+        </div><!-- /.carousel-inner -->
+        <!--  Next and Previous controls below
+              href values must reference the id for this carousel -->
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- /.carousel -->
       </div>
-      <div class="col-md-5">
+      <div class="col-md-3">
         <div class="well pull-right">
           <img src="http://www.onlinelogomaker.com/applet_userdata/229330/projects/project_1405341339000.png">
         </div>
+         <br>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
       </div>
     </div>
   </div>
 </header>
 
 
-
+<body>
 <!-- Begin Body -->
 <div class="container">
   <div class="no-gutter row">
@@ -101,7 +132,7 @@
         <!--right column-->
           <div class="col-md-3">
               <div class="panel panel-default" id="midCol">
-                <div class="panel-heading" style="background-color:#0297EC;color:#eee;">The Feed
+                <div class="panel-heading" style="background-color:#0071BC;color:#eee;">The Feed
                 </div>
                 <div class="panel-body">
                   <div class="media">
@@ -135,4 +166,7 @@
                 </div> <!-- end right content column-->
       </div> <!--no-gutter row-->
   </div> <!--container-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+  </body>
   </html>
