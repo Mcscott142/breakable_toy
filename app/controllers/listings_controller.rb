@@ -51,6 +51,7 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
+    @categories = Category.all
 
     if @listing.update(listing_params) && @listing.user_id == current_user.id
       flash[:notice] = "Listing Updated"
