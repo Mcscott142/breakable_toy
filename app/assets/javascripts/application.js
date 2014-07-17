@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
-//= require jquery
 //= require bootstrap-sprockets
+$(document).ready(function() {
+  $('#this-carousel-id').carousel();
+});

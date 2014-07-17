@@ -23,7 +23,9 @@
         <div class="col-md-6">
           <%= image_tag @listing.image.med_thumb, class: "img-responsive" if @listing.image? %>
           <br>
-          <b>Status:</b> <%= @listing.status %>
+          <% if @listing.status == "Closed" %>
+          <b>Status:</b> <span id="closedstatus"><%= @listing.status %></span>
+          <% end %>
         </div>
       </div>
 
