@@ -15,7 +15,7 @@ class Offer < ActiveRecord::Base
   # end
 
   def reject_offer
-    self.status = 'rejected'
+    self.status = 'Rejected'
     self.save
   end
 end

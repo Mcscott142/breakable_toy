@@ -120,6 +120,10 @@
                     <li><%= link_to "My Offers", offers_path%></li>
                   <% end %>
                 </ul>
+                <hr>
+                 <h3>Top Member </h3>
+                  <h5><%= image_tag @topuser.profile_pic.thumb, class: "pull-right" if @topuser.profile_pic? %>  <%= "#{@topuser.first_name} #{@topuser.last_name}" %></h5>
+                  Listings: <%= @topuser.listings.count %>
               </div><!--/panel body-->
           </div><!--/panel-->
         </div><!--/end left column-->
@@ -153,17 +157,10 @@
 
 
 
-                <hr>
+                    <hr>
 
-                <div class="fb-like-box" data-href="https://www.facebook.com/swapitdontshopit" data-width="260" data-height="500" data-colorscheme="light" data-show-faces="false" data-header="true" data-stream="true" data-show-border="false"></div>
-
-                <hr>
-
-
-                  <h3>Top Member </h3>
-
-                  <h5><a href="#"><i class="glyphicon glyphicon-user"></i> John Chapman</a></h5>
-                  </div>
+                    <div class="fb-like-box" data-href="https://www.facebook.com/swapitdontshopit" data-width="260" data-height="500" data-colorscheme="light" data-show-faces="false" data-header="true" data-stream="true" data-show-border="false"></div>
+                    </div>
                   </div> <!--/panel-->
                 </div> <!-- end right content column-->
       </div> <!--no-gutter row-->
