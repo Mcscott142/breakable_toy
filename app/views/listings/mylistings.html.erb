@@ -3,7 +3,7 @@
     <div class="panel-body">
       <% @mylistings.each do |listing| %>
         <% if listing.user == current_user %>
-        <h2><%= listing.name %></h2>
+        <h2><%= link_to listing.name, listing_path(listing) %></h2>
         <%= image_tag listing.image.small_thumb, class: "img-responsive pull-right" if listing.image? %>
         <h4><%= listing.category.name %></h4>
         <h5><%= listing.description %></h5>

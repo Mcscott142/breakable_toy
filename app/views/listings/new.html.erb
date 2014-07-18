@@ -4,13 +4,13 @@
 
 <%= simple_form_for @listing do |f| %>
   <div class="col-md-6">
-  <%= f.input :name %>
+  <%= f.input :name, required: true %>
   <br>
   <%= f.input :description %>
   <br>
-  <%= f.input :value %>
+  <%= f.input :value, required: true %>
   <br>
-  <%= f.association :category %>
+  <%= f.association :category, required: true %>
   <br>
   <%= f.file_field :image %>
   <br>
