@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
    before_filter :configure_permitted_parameters, if: :devise_controller?
 
    before_action :set_listings
+   before_action :top_user
 
   protected
 
@@ -16,5 +17,9 @@ class ApplicationController < ActionController::Base
 
    def set_listings
     @recentlistings = Listing.order(created_at: :desc ).where.not(status: "Closed").limit(5)
+   end
+
+   def top_user
+    @topuser = User.all.max_by { |u| u.listings.count }
    end
 end
