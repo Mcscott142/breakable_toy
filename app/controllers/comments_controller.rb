@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
 
     if @comment.save
         if @offer.user == current_user
-          CommentMailer.comment_alert(@offeruser).deliver
+          CommentMailer.comment_alert(@listinguser, @listing).deliver
         else
-          CommentMailer.comment_alert(@listinguser).deliver
+          CommentMailer.comment_alert(@offeruser, @listing).deliver
         end
       redirect_to @listing
     else
