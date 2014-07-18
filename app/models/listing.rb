@@ -10,7 +10,9 @@ class Listing < ActiveRecord::Base
   validates :category_id, presence: true
   validates :user_id, presence: true
 
-   mount_uploader :image, ListingPicUploader
+  mount_uploader :image, ListingPicUploader
+
+
 
    def self.search(query)
   where("name like ?", "%#{query}%")
