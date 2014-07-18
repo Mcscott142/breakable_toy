@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
   def show
     @comment = Comment.new
     @listing = Listing.find(params[:id])
-
+    authenticate_user!
 
     if @listing.user == current_user
       @offers = @listing.offers

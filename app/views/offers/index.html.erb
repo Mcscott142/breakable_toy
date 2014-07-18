@@ -3,7 +3,7 @@
     <div class="panel-body">
       <% @offers.each do |offer| %>
         <% if offer.user == current_user %>
-          <div class="col-md-6">
+          <div class="col-md-5">
           <h5>Offer</h5>
           <%= image_tag offer.swap_listing.image.small_thumb, class: "img-responsive pull-right" if offer.swap_listing.image %>
           <%= link_to offer.swap_listing.name, listing_path(offer.swap_listing) %>
@@ -21,7 +21,6 @@
           <%= "Value: $#{offer.listing.value}" %>
           </div>
          <% end %>
-        <hr>
       <% end %>
     </div><!--/panel-body-->
 </div><!--/panel-->

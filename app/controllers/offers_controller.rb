@@ -14,8 +14,9 @@ class OffersController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @offer.listing = @listing
     @listings = current_user.listings.where.not(status: "Closed")
-
+    @user = @listing.user
     if @offer.save
+      OfferMailer.offer_alert(@user, @listing).deliver
       flash[:notice] = "Offer made!"
       redirect_to listing_path(params[:listing_id])
     else
