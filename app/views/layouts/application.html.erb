@@ -120,7 +120,9 @@
                   <% end %>
                 </ul>
                 <hr>
-
+                 <h3>Top Member </h3>
+                  <h5><%= image_tag @topuser.profile_pic.thumb, class: "pull-right" if @topuser.profile_pic? %>  <%= "#{@topuser.first_name} #{@topuser.last_name}" %></h5>
+                  Listings: <%= @topuser.listings.count %>
               </div><!--/panel body-->
           </div><!--/panel-->
         </div><!--/end left column-->
