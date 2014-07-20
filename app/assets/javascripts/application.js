@@ -18,3 +18,4 @@
 $(document).ready(function() {
   $('#this-carousel-id').carousel();
 });
+
