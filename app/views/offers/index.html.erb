@@ -2,7 +2,7 @@
   <div class="panel-heading" style="background-color:#0297EC;color:#fff;">My Offers</div>
     <div class="panel-body">
       <% @offers.each do |offer| %>
-        <% if offer.user == current_user %>
+        <% if offer.user == current_user && offer.listing.status != "Closed"%>
           <div class="col-md-5">
           <h5>Offer</h5>
           <%= image_tag offer.swap_listing.image.small_thumb, class: "img-responsive pull-right" if offer.swap_listing.image %>
