@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem "airbrake"
 gem 'kaminari'
 gem 'font-awesome-sass'
 gem 'mini_magick', '3.5.0'
